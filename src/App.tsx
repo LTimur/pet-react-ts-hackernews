@@ -1,15 +1,22 @@
-import { HashRouter } from "react-router-dom";
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './pages/Notfound';
 
-function App() {
-  return <h1>Hackernews</h1>;
-}
-
-
-function WrappedApp(){
+export function App() {
   return (
-  <HashRouter>
-    <App />
-  </HashRouter>)
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
 
-export default WrappedApp;
+export function WrappedApp() {
+  return (
+    <HashRouter>
+      <App />
+    </HashRouter>
+  );
+}
+
+
