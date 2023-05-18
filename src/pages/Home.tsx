@@ -1,5 +1,9 @@
-function Home() {
-  return <h1>Hackernews</h1>;
+import Header from "../components/Header";
+
+const Home: React.FC = () => {
+  return (
+    <Header />
+  )
 }
 
 export default Home;
