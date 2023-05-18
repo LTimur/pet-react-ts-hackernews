@@ -1,18 +1,20 @@
+import selectFields from "../utils/SelectFields";
+
 export const baseUrl = 'https://hacker-news.firebaseio.com/v0/';
 export const newStoriesUrl = `${baseUrl}newstories.json`;
-export const storyUrl = (storyId: number): string =>
-  `${baseUrl}item/${storyId}.json`;
+export const storyUrl = `${baseUrl}item/`
 
-export const getStory = async (storyId: string) => {
+export const getStory = async (storyId) => {
   try {
-    const response = await fetch(`${storyUrl}${storyId}.json`);
+    const response = await fetch(`${storyUrl + storyId}.json`);
     if (response.ok) {
       const jsonResponse = await response.json();
-      return jsonResponse;
+      return selectFields(jsonResponse)
     }
     return response;
   } catch (error) {
     console.error(error);
+    return error
   }
 };
 
@@ -26,5 +28,6 @@ export const getStoryIds = async () => {
     return response;
   } catch (error) {
     console.error(error);
+    return error
   }
 };
