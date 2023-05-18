@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
