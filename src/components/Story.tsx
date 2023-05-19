@@ -34,21 +34,21 @@ interface StoryProps {
 }
 
 interface StoryData {
-    url: string;
+    url?: string;
     title: string;
     score: number;
     by: string;
-    time: number;
+    time?: number;
   }
 
 const Story: React.FC<StoryProps> = ({storyId}) => {
-    const [story, setStory] = useState({});
+    const [story, setStory] = useState<StoryData | null>(null);
 
     useEffect(() => {
-        getStory(storyId).then(data => data && data.url && setStory(data))
-    })
+        getStory(storyId.toString()).then(data => data ? setStory(data as StoryData) : null)
+    }, [storyId])
 
-    return story && story.url ? (
+    return story && story?.url && story.url !== "" && story.time !== undefined? (
         <StoriesWrapper>
             <StoryLink href={story.url}>{story.title}</StoryLink>
             <StoryDetails>{story.score} {story.score > 1 ? 'points' : 'point'} by: {story.by} {mapTime(story.time)} ago</StoryDetails>
