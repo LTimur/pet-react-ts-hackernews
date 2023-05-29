@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
@@ -26,7 +25,7 @@ const Heading = styled.h1`
     margin-left: 4px;
 `;
 
-const Header: React.FC = () => {
+function Header() {
     return (
         <HeaderWrapper>
             <Logo src='logo.gif' alt="logo" />

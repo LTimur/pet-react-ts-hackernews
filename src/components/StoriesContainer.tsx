@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getStoryIds } from '../services/HackernewsApi';
 import Story from './Story';
 
-const StoriesContainer: React.FC<{}> = () => {
+function StoriesContainer() {
   const [storyIds, setStoryIds] = useState([]);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 /* eslint-disable react/function-component-definition */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import {getStory}  from "../services/HackernewsApi";
 import mapTime from "../utils/MapTime";
@@ -41,7 +41,7 @@ interface StoryData {
     time?: number;
   }
 
-const Story: React.FC<StoryProps> = ({storyId}) => {
+function Story({storyId}) {
     const [story, setStory] = useState<StoryData | null>(null);
 
     useEffect(() => {
